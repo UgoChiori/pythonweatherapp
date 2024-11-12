@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .weather-info {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            border-radius: 8px;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Forecast</h1>
+    <form method="GET" action="/weather">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if city %}
+    <div class="weather-info">
+        <h2>Weather in {{ city }}</h2>
+
+        <p>Temperature: {{ temperature }}°C</p>
+        <p>{{ message }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
