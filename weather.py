@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from dotenv import load_dotenv
 import os
 import requests
@@ -8,6 +8,12 @@ load_dotenv()
 
 app = Flask(__name__)
 API_KEY = os.getenv("API_KEY")
+
+
+@app.route('/')
+def home():
+    # Redirect to the /weather endpoint
+    return redirect(url_for('get_weather'))
 
 @app.route('/weather', methods=['GET'])
 def get_weather():
